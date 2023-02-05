@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 
 class Task extends Component {
+
     render() {
+        const { text , createdAt } = this.props.task;
+
         return (
+            
+
             <li>
-                {this.props.content}
+                {text} - Created at: {createdAt.toUTCString()}
             </li>
         );
     }

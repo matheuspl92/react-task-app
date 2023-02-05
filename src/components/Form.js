@@ -14,7 +14,7 @@ export default class Form extends Component {
     }
 
     handleSubmit(event) {
-        this.props.updateTasks(this.state.value);
+        this.props.updateTasks({ text: this.state.value, createdAt: new Date()});
         event.preventDefault();
     }
 
