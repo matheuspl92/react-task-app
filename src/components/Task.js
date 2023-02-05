@@ -3,13 +3,11 @@ import React, { Component } from "react";
 class Task extends Component {
 
     render() {
-        const { text , createdAt } = this.props.task;
+        const { text , createdAt, number } = this.props.task;
 
         return (
-            
-
             <li>
-                {text} - Created at: {createdAt.toUTCString()}
+                Task number: {number} - {text} - Created at: {createdAt.toUTCString()}
             </li>
         );
     }

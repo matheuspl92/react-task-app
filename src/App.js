@@ -28,6 +28,11 @@ export default class App extends Component {
       }
       return 0;
     })
+
+    for (let i = 0; i < tasks.length; i += 1){
+      tasks[i].number = i + 1;
+    }
+
     console.log(tasks)
 
     this.setState({ tasks: tasks })
