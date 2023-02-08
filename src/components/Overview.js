@@ -3,10 +3,11 @@ import Task from './Task'
 
 export default class Overview extends Component {
   render() {
+    const { tasks, deleteTask } = this.props;
     return (
       <ul>
-        {this.props.tasks.map((task, id) => {
-            return <Task task={task} key={id} />
+        {tasks.map((task, id) => {
+            return <Task task={task} key={id} deleteTask={deleteTask} />
         })}
       </ul>
     )

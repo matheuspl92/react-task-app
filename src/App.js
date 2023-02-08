@@ -9,6 +9,7 @@ export default class App extends Component {
 
     this.updateTasks = this.updateTasks.bind(this);
     this.orderTasks = this.orderTasks.bind(this);
+    this.deleteTask = this.deleteTask.bind(this);
   };
 
   updateTasks(newTask) {
@@ -36,15 +37,17 @@ export default class App extends Component {
     this.setState({ tasks: tasks });
   };
 
-  deleteTask(taskNumber) {
+  async deleteTask(taskNumber) {
     const { tasks } = { ...this.state };
-    this.setState({ tasks: tasks.filter( task => task.number !== taskNumber)});
+    console.log('deleted')
+    await this.setState({ tasks: tasks.filter( task => task.number !== taskNumber)});
+    this.orderTasks();
   };
 
   render() {
     return (
       <div>
-        <Overview tasks={this.state.tasks} />
+        <Overview tasks={this.state.tasks} deleteTask={this.deleteTask} />
         <Form updateTasks={this.updateTasks} orderTasks={this.orderTasks} />
       </div>
     )
