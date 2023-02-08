@@ -17,6 +17,7 @@ export default class Form extends Component {
         await this.props.updateTasks({ text: this.state.value, createdAt: new Date()});
         this.props.orderTasks();
         event.preventDefault();
+        this.setState({ value: '' });
     }
 
     render() {
