@@ -9,13 +9,13 @@ export default class App extends Component {
 
     this.updateTasks = this.updateTasks.bind(this);
     this.orderTasks = this.orderTasks.bind(this);
-  }
+  };
 
   updateTasks(newTask) {
     this.setState((prevState) => {
       return { tasks: [...prevState.tasks, newTask] };
     })
-  }
+  };
 
   orderTasks() {
     const { tasks } = { ...this.state };
@@ -33,10 +33,13 @@ export default class App extends Component {
       tasks[i].number = i + 1;
     }
 
-    console.log(tasks)
+    this.setState({ tasks: tasks });
+  };
 
-    this.setState({ tasks: tasks })
-  }
+  deleteTask(taskNumber) {
+    const { tasks } = { ...this.state };
+    this.setState({ tasks: tasks.filter( task => task.number !== taskNumber)});
+  };
 
   render() {
     return (
