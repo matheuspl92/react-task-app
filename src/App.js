@@ -10,6 +10,7 @@ export default class App extends Component {
     this.updateTasks = this.updateTasks.bind(this);
     this.orderTasks = this.orderTasks.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.editTask = this.editTask.bind(this);
   };
 
   updateTasks(newTask) {
@@ -44,10 +45,16 @@ export default class App extends Component {
     this.orderTasks();
   };
 
+  editTask(taskNumber, newText) {
+    const { tasks } = { ...this.state };
+    tasks[taskNumber - 1].text = newText;
+    this.setState({ tasks: tasks });
+  }
+
   render() {
     return (
       <div>
-        <Overview tasks={this.state.tasks} deleteTask={this.deleteTask} />
+        <Overview tasks={this.state.tasks} deleteTask={this.deleteTask} editTask={this.editTask} />
         <Form updateTasks={this.updateTasks} orderTasks={this.orderTasks} />
       </div>
     )
